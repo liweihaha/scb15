@@ -51,6 +51,7 @@
 
 import requests
 import openpyxl
+# coding=utf-8
 cate=openpyxl.load_workbook('test_case_api.xlsx')
 sheet=cate['register']
 list_1=[]
@@ -72,7 +73,7 @@ for j in list_1:
     # print(request_body)
     header = {"X-Lemonban-Media-Type": "lemonban.v2", "Content-Type": "application/json"}
     req = requests.post(url=j['url'],json=request_body,headers=header)
-    req_c=req.json(encoding='utf-8')
+    req_c=req.json()
     print(req_c)
     real_msg=req.json()['msg']
     if expend_msg == real_msg:
